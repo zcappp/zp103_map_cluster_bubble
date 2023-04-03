@@ -1,10 +1,10 @@
-function onInit({ exc, id, props }) {
+function init({ exc, id, props }) {
     exc('load("https://map.qq.com/api/gljs?v=1.exp&key=GC2BZ-B7C3X-DM44X-ZHAZM-JP5WE-VHFR4")', null, () => {
-        init(id, exc, props)
+        init_(id, exc, props)
     })
 }
 
-function init(id, exc, { center, zoom = 11, LatLng, onClick, showControl = true }) {
+function init_(id, exc, { center, zoom = 11, LatLng, onClick, showControl = true }) {
     if (!Array.isArray(LatLng) || !Array.isArray(LatLng[0])) LatLng = []
     var option = { zoom, showControl }
     if (Array.isArray(center)) option.center = new TMap.LatLng(center[0], center[1])
@@ -151,6 +151,6 @@ $plugin({
         type: "switch",
         label: "显示控件"
     }],
-    onInit,
+    init,
     css
 })
